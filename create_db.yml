@@ -7,4 +7,5 @@
         src: templates/create_db.sql.j2
         dest: "C:\\scripts\\create_{{ db_name }}.sql"
     - name: execute db creation sql
-      command: "Invoke-SqlCmd -ServerInstance WIN-4GAK532GLQ0 -TrustServerCertificate -InputFile C:\\scripts\\create_{{ db_name }}.sql"
+      ansible.windows.win_powershell:
+        script: "Invoke-SqlCmd -ServerInstance WIN-4GAK532GLQ0 -TrustServerCertificate -InputFile C:\\scripts\\create_{{ db_name }}.sql"
