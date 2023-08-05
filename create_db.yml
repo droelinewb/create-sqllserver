@@ -1,0 +1,9 @@
+---
+- hosts: windows
+  remote_user: administrator
+  tasks:
+    - name: create db creation sql
+      template:
+        src: templates/create_db.sql.j2
+        dest: "C:\\scripts\\create_{{ db_name }}.sql"
+    # Invoke-SqlCmd -ServerInstance WIN-4GAK532GLQ0 -TrustServerCertificate -InputFile C:\scripts\create_firsty.sql

@@ -1,0 +1,15 @@
+CREATE DATABASE [{{ db_name }}]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'{{ db_name }}', FILENAME = N'C:\DBs\{{ db_name }}.mdf' , SIZE = 1048576KB , FILEGROWTH = 262144KB )
+ LOG ON 
+( NAME = N'{{ db_name }}_log', FILENAME = N'C:\DBs\{{ db_name }}_log.ldf' , SIZE = 524288KB , FILEGROWTH = 131072KB )
+GO
+ 
+USE [master]
+GO
+ALTER DATABASE [{{ db_name }}] SET RECOVERY SIMPLE WITH NO_WAIT
+GO
+ 
+ALTER AUTHORIZATION ON DATABASE::[{{ db_name }}] TO [sa]
+GO
